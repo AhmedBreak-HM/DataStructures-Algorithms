@@ -39,6 +39,28 @@ public:
 			head = newNode;
 		}
 	}
+
+	void InsertBefor(int item, int newItem) {
+		if (IsEmpty()) {
+			InsertFirst(newItem);
+			return;
+
+		}
+		if (!IsFound(item)) {
+			cout << "This item not Found" << endl;
+			return;
+		}
+
+		Node* temp = head;
+		Node* newNode = new Node();
+		newNode->data = newItem;
+		while (temp != NULL && temp->next->data != item) {
+			temp = temp->next;
+		}
+		newNode->next = temp->next;
+		temp->next = newNode;
+	}
+
 	void Display() {
 		Node* temp = head;
 		while (temp != NULL) {
@@ -104,6 +126,13 @@ int main()
 		cout << "Item Is Found" << endl;
 	else
 		cout << "Item Is Not Found" << endl;
+
+	int newItem;
+	cout << "Please Enter old and new items" << endl;
+	cin >> item;
+	cin >> newItem;
+	list.InsertBefor(item, newItem);
+	list.Display();
 
 }
 
