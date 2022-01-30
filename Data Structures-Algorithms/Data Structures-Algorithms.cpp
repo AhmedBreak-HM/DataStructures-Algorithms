@@ -9,6 +9,9 @@ public:
 		data = value;
 		next = NULL;
 	}
+	Node() {
+		next = NULL;
+	}
 };
 
 class LinkedList {
@@ -24,7 +27,7 @@ public:
 		return (head == NULL);
 	}
 	void InsertFirst(int value) {
-		Node* newNode = NULL;
+		Node* newNode = new Node();
 		newNode->data = value;
 		if (IsEmpty()) {
 			newNode->next = NULL;
@@ -40,15 +43,16 @@ public:
 		Node* temp = head;
 		while (temp != NULL) {
 			cout << temp->data << "\t";
-			temp->next;
+			temp = temp->next;
 		}
+		cout << endl;
 	}
 	int Count() {
 		Node* temp = head;
 		int count = 0;
 		while (temp != NULL) {
 			count++;
-			temp->next;
+			temp = temp->next;
 		}
 		return count;
 	}
@@ -79,18 +83,20 @@ int main()
 	cin >> item;
 	list.InsertFirst(item);
 	list.Display();
-
-	cout << "please enter your item" << endl;
-	cin >> item;
-	list.InsertFirst(item);
-	list.Display();
-
-	cout << "please enter your item" << endl;
-	cin >> item;
-	list.InsertFirst(item);
-	list.Display();
-
 	cout << list.Count() << endl;
+
+	cout << "please enter your item" << endl;
+	cin >> item;
+	list.InsertFirst(item);
+	list.Display();
+	cout << list.Count() << endl;
+
+	cout << "please enter your item" << endl;
+	cin >> item;
+	list.InsertFirst(item);
+	list.Display();
+	cout << list.Count() << endl;
+
 	int searchItem;
 	cout << "pleas enter your search value" << endl;
 	cin >> searchItem;
