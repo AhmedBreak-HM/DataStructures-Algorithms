@@ -61,6 +61,23 @@ public:
 		temp->next = newNode;
 	}
 
+	void Append(int item) {
+		if (IsEmpty()) {
+			InsertFirst(item);
+			return;
+		}
+		Node* temp = head;
+		Node* newNode = new Node();
+		while (temp->next != NULL)
+		{
+			temp = temp->next;
+		}
+		newNode->data = item;
+		temp->next = newNode;
+		newNode->next = NULL;
+
+	}
+
 	void Display() {
 		Node* temp = head;
 		while (temp != NULL) {
@@ -134,5 +151,9 @@ int main()
 	list.InsertBefor(item, newItem);
 	list.Display();
 
+	cout << "Please Enter Append Item" << endl;
+	cin >> item;
+	list.Append(item);
+	list.Display();
 }
 
