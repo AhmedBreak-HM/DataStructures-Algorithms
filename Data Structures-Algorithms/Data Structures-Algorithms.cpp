@@ -41,6 +41,8 @@ public:
 	}
 
 	void InsertBefor(int item, int newItem) {
+		if (head->data == item)
+			cout << "This item is First Are You Stupid" << endl;
 		if (IsEmpty()) {
 			InsertFirst(newItem);
 			return;
@@ -107,6 +109,28 @@ public:
 		}
 		return false;
 	}
+	void Delete(int item) {
+		if (IsEmpty())
+		{
+			cout << "This List Is Empty" << endl;
+			return;
+		}
+		Node* delPtr = head;
+		Node* prev = NULL;
+		if (head->data == item) {
+			delPtr = head;
+			head = head->next;
+			delete delPtr;
+			return;
+		}
+		while (delPtr->data != item) {
+			prev = delPtr;
+			delPtr = delPtr->next;
+		}
+		prev->next = delPtr->next;
+		delete delPtr;
+
+	}
 };
 
 
@@ -154,6 +178,10 @@ int main()
 	cout << "Please Enter Append Item" << endl;
 	cin >> item;
 	list.Append(item);
+	list.Display();
+	cout << "Please Enter Delete Item" << endl;
+	cin >> item;
+	list.Delete(item);
 	list.Display();
 }
 
